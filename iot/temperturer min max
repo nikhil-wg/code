@@ -1,0 +1,54 @@
+#include"DHT.h"
+#define DHTPIN 2
+#define DHTTYPE DHT11
+
+DHT dht(DHTPIN,DHTTYPE);
+float tfmax;
+float tfmin=100;
+
+void setup()
+{
+  Serial.begin(9600)
+  dht.begin();
+
+}
+
+void loop()
+{
+  delay(2000);
+  float h=dht.ReadHumidity();
+  float t=dht.ReadTemperature();
+  float f=dht.ReadTemperature(true);
+
+
+
+  Serial.print(f("HUMIDITY:"));
+  Serial.print(h);
+  Serial.print(t("TEMPERATURE:));
+  Serial.print(t);
+  Serial.print(f("c"));
+  Serial.print(f);
+
+  if(f>tfmax)
+  {
+    tfmax=f;
+  }
+  if(f<tfmin)
+  {
+    tfmin=f;
+  }
+  Serial.print("TEMPERATURE:);
+  Serial.print(f);
+  Serial.print("f")
+  Serial.println();
+  Serial.print("MAX TEMP=");
+  Serial.print(tfmax);
+  Serial.println();
+  Serial.print("MIN TEMP=");
+  Serial.print(tfmin);
+  Serial.println();
+  
+
+  
+}
+
