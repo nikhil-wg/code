@@ -1,0 +1,17 @@
+Import.time
+GPIO.setwarnings(false)
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(21,GPIO.OUT)
+GPIO.setup(26,GPIO.IN)
+
+try:while(true):
+        if(GPIO.INPUT(26)==1):
+        print("object detected")
+        GPIO.OUTPUT(21,true)
+
+        else:
+        print("object not detected")
+        GPIO.OUTPUT(21,false)
+
+except:GPIO.cleanup()
+        
