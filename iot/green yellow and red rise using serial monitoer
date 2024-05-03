@@ -1,0 +1,47 @@
+void setup() {
+  pinMode(6,OUTPUT); //connect to green light
+  pinMode(7,OUTPUT); //connect to yellow light
+  pinMode(8,OUTPUT); //connect to red light
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+  if(Serial.available()>0){
+    char val;
+
+    val=Serial.read();
+    Serial.println(val);
+
+    if(val=="b" or val=="B"){
+      digitalWrite(7,LOW);
+      digitalWrite(8,LOW);
+      for(int i=0;i<=70;i++){
+        digitalWrite(6,HIGH);
+        delay(100);
+        digitalWrite(6,LOW)
+        delay(100);
+      }
+    }
+    else if(val=="g" or val=="G"){
+      digitalWrite(6,HIGH);
+      digitalWrite(7,LOW);
+      digitalWrite(8,LOW);
+      delay(1000);
+    }
+    else if(val=="y" or val=="Y"){
+      digitalWrite(6,LOW);
+      digitalWrite(7,HIGH);
+      digitalWrite(8,LOW);
+      delay(1000);
+    }
+    else if(val=="r" or val=="R"){
+      digitalWrite(6,LOW);
+      digitalWrite(7,LOW);
+      digitalWrite(8,HIGH);
+      delay(1000);
+    }
+  }
+
+}
+
